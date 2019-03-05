@@ -1,5 +1,4 @@
 import unittest
-from gridsim.utils import get_loads
 
 
 class TestLoadFiles(unittest.TestCase):

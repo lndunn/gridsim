@@ -1,0 +1,12 @@
+New Capacitor.substation_s1_s_nssee0_1247_cap15 Bus1=substation_s1_s_nssee0_1247_node15 phases=3 Kv=12.47 conn=Wye Kvar=5400.0
+
+New Capacitor.substation_s1_s_nssee0_1247_cap14 Bus1=substation_s1_s_nssee0_1247_node14 phases=3 Kv=12.47 conn=Wye Kvar=5400.0
+
+New Capacitor.substation_s1_s_nssee1_1247_cap15 Bus1=substation_s1_s_nssee1_1247_node15 phases=3 Kv=12.47 conn=Wye Kvar=5400.0
+
+New Capacitor.substation_s1_s_nssee1_1247_cap14 Bus1=substation_s1_s_nssee1_1247_node14 phases=3 Kv=12.47 conn=Wye Kvar=5400.0
+
+New Capacitor.substation_s1_s_nssee2_1247_cap15 Bus1=substation_s1_s_nssee2_1247_node15 phases=3 Kv=12.47 conn=Wye Kvar=5400.0
+
+New Capacitor.substation_s1_s_nssee2_1247_cap14 Bus1=substation_s1_s_nssee2_1247_node14 phases=3 Kv=12.47 conn=Wye Kvar=5400.0
+

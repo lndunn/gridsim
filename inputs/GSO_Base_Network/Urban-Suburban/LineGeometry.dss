@@ -1,0 +1,14 @@
+New LineGeometry.2PH_Code1_Code1_Code1 nconds=3 nphases=2 cond=1 wire=Code1 cond=2 wire=Code1 cond=3 wire=Code1 reduce=n
+New LineGeometry.3PH_Code11_Code11_Code11_Code11 nconds=4 nphases=3 cond=1 wire=Code11 cond=2 wire=Code11 cond=3 wire=Code11 cond=4 wire=Code11 reduce=n
+New LineGeometry.3PH_Code5_Code5_Code5_Code5 nconds=4 nphases=3 cond=1 wire=Code5 cond=2 wire=Code5 cond=3 wire=Code5 cond=4 wire=Code5 reduce=n
+New LineGeometry.1PH_Code8_Code8 nconds=2 nphases=1 cond=1 wire=Code8 cond=2 wire=Code8 reduce=n
+New LineGeometry.2PH_Code2_Code2_Code2 nconds=3 nphases=2 cond=1 wire=Code2 cond=2 wire=Code2 cond=3 wire=Code2 reduce=n
+New LineGeometry.1PH_Code6_Code6 nconds=2 nphases=1 cond=1 wire=Code6 cond=2 wire=Code6 reduce=n
+New LineGeometry.3PH_Code9_Code9_Code9_Code9 nconds=4 nphases=3 cond=1 wire=Code9 cond=2 wire=Code9 cond=3 wire=Code9 cond=4 wire=Code9 reduce=n
+New LineGeometry.2PH_Code3_Code3_Code3 nconds=3 nphases=2 cond=1 wire=Code3 cond=2 wire=Code3 cond=3 wire=Code3 reduce=n
+New LineGeometry.3PH_Code2_Code2_Code2_Code2 nconds=4 nphases=3 cond=1 wire=Code2 cond=2 wire=Code2 cond=3 wire=Code2 cond=4 wire=Code2 reduce=n
+New LineGeometry.3PH_Code7_Code7_Code7_Code7 nconds=4 nphases=3 cond=1 wire=Code7 cond=2 wire=Code7 cond=3 wire=Code7 cond=4 wire=Code7 reduce=n
+New LineGeometry.3PH_Code6_Code6_Code6_Code6 nconds=4 nphases=3 cond=1 wire=Code6 cond=2 wire=Code6 cond=3 wire=Code6 cond=4 wire=Code6 reduce=n
+New LineGeometry.2PH_Code10_Code10_Code10 nconds=3 nphases=2 cond=1 wire=Code10 cond=2 wire=Code10 cond=3 wire=Code10 reduce=n
+New LineGeometry.2PH_Code4_Code4_Code4 nconds=3 nphases=2 cond=1 wire=Code4 cond=2 wire=Code4 cond=3 wire=Code4 reduce=n
+New LineGeometry.3PH_Code9_Code9_Code9_Code9 nconds=4 nphases=1 cond=1 wire=Code9 cond=2 wire=Code9 cond=3 wire=Code9 cond=4 wire=Code9 reduce=n

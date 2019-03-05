@@ -1,0 +1,20 @@
+Compile [master.dss]  
+
+plot type=circuit quantity=Power    Max=2000 dots=n labels=n subs=y C1=Blue 1phlinestyle=3 3phlinestyle=6
+
+! Example profile plot scripts
+!Plot profile  phases=default
+!Plot profile phases=all
+!Plot profile phases=primary
+!Plot profile phases=1
+!Plot profile phases=2
+!Plot profile phases=3
+
+show voltages ln nodes
+!show powers kva elements
+!show overloads
+!show currents elements
+!show losses
+Export Capacity
+
+

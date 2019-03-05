@@ -1,0 +1,21 @@
+Clear
+
+New Circuit.Dataset3rural_postprocessed bus1=st_mat pu=1.0 R1=0.0000001 X1=0.00000001   basekV=230
+
+!Redirect WireData.dss
+Redirect LineCodes.dss
+Redirect Lines.dss
+Redirect Loadshapes.dss
+
+Redirect Loads.dss
+Redirect Transformers.dss
+Redirect Regulators.dss
+Redirect Capacitors.dss
+
+Set voltagebases = [230, 69, 12.47, 0.480, 0.20784]
+Calcvoltagebases
+
+
+Buscoords  buscoords.dss
+Solve
+

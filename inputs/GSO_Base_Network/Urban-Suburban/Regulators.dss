@@ -1,0 +1,80 @@
+New RegControl.substation_s2_s_nssee5_1247_subxfmr_regulator_3 transformer=substation_s2_s_nssee5_1247_sub_tran3 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee5_1247_subxfmr_regulator_2 transformer=substation_s2_s_nssee5_1247_sub_tran2 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee5_1247_subxfmr_regulator_1 transformer=substation_s2_s_nssee5_1247_sub_tran1 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s1_s_nssee3_1247_subxfmr_regulator transformer=substation_s1_s_nssee3_1247_sub_tran winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s1_s_nssee6_1247_subxfmr_regulator transformer=substation_s1_s_nssee6_1247_sub_tran winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee16_1247_subxfmr_regulator_3 transformer=substation_s2_s_nssee16_1247_sub_tran3 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee16_1247_subxfmr_regulator_1 transformer=substation_s2_s_nssee16_1247_sub_tran1 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee16_1247_subxfmr_regulator_2 transformer=substation_s2_s_nssee16_1247_sub_tran2 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee12_1247_subxfmr_regulator_2 transformer=substation_s2_s_nssee12_1247_sub_tran2 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee12_1247_subxfmr_regulator_3 transformer=substation_s2_s_nssee12_1247_sub_tran3 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee12_1247_subxfmr_regulator_1 transformer=substation_s2_s_nssee12_1247_sub_tran1 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee2_1247_subxfmr_regulator_3 transformer=substation_s2_s_nssee2_1247_sub_tran3 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee2_1247_subxfmr_regulator_2 transformer=substation_s2_s_nssee2_1247_sub_tran2 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee2_1247_subxfmr_regulator_1 transformer=substation_s2_s_nssee2_1247_sub_tran1 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s1_s_nssee17_1247_subxfmr_regulator transformer=substation_s1_s_nssee17_1247_sub_tran winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s1_s_nssee9_1247_subxfmr_regulator transformer=substation_s1_s_nssee9_1247_sub_tran winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee7_1247_subxfmr_regulator_1 transformer=substation_s2_s_nssee7_1247_sub_tran1 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee7_1247_subxfmr_regulator_3 transformer=substation_s2_s_nssee7_1247_sub_tran3 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee7_1247_subxfmr_regulator_2 transformer=substation_s2_s_nssee7_1247_sub_tran2 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s1_s_nssee13_1247_subxfmr_regulator transformer=substation_s1_s_nssee13_1247_sub_tran winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee8_1247_subxfmr_regulator_1 transformer=substation_s2_s_nssee8_1247_sub_tran1 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee8_1247_subxfmr_regulator_3 transformer=substation_s2_s_nssee8_1247_sub_tran3 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee8_1247_subxfmr_regulator_2 transformer=substation_s2_s_nssee8_1247_sub_tran2 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s1_s_nssee15_1247_subxfmr_regulator transformer=substation_s1_s_nssee15_1247_sub_tran winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee10_1247_subxfmr_regulator_3 transformer=substation_s2_s_nssee10_1247_sub_tran3 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee10_1247_subxfmr_regulator_2 transformer=substation_s2_s_nssee10_1247_sub_tran2 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee10_1247_subxfmr_regulator_1 transformer=substation_s2_s_nssee10_1247_sub_tran1 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee1_1247_subxfmr_regulator_3 transformer=substation_s2_s_nssee1_1247_sub_tran3 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee1_1247_subxfmr_regulator_1 transformer=substation_s2_s_nssee1_1247_sub_tran1 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee1_1247_subxfmr_regulator_2 transformer=substation_s2_s_nssee1_1247_sub_tran2 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s1_s_nssee11_1247_subxfmr_regulator transformer=substation_s1_s_nssee11_1247_sub_tran winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee0_1247_subxfmr_regulator_3 transformer=substation_s2_s_nssee0_1247_sub_tran3 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee0_1247_subxfmr_regulator_2 transformer=substation_s2_s_nssee0_1247_sub_tran2 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee0_1247_subxfmr_regulator_1 transformer=substation_s2_s_nssee0_1247_sub_tran1 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee14_1247_subxfmr_regulator_1 transformer=substation_s2_s_nssee14_1247_sub_tran1 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee14_1247_subxfmr_regulator_2 transformer=substation_s2_s_nssee14_1247_sub_tran2 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee14_1247_subxfmr_regulator_3 transformer=substation_s2_s_nssee14_1247_sub_tran3 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee4_1247_subxfmr_regulator_2 transformer=substation_s2_s_nssee4_1247_sub_tran2 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee4_1247_subxfmr_regulator_1 transformer=substation_s2_s_nssee4_1247_sub_tran1 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+
+New RegControl.substation_s2_s_nssee4_1247_subxfmr_regulator_3 transformer=substation_s2_s_nssee4_1247_sub_tran3 winding=2 CTprim=600.0 delay=45.0 maxtapchange=16 ptratio=60.0 band=3.0 vreg=123.0 Ptphase=1 vlimit=0.0
+

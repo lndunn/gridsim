@@ -1,0 +1,10 @@
+New WireData.Code7 normamps=600.0 emergamps=600.0
+New WireData.Code9 normamps=221.0 emergamps=600.0
+New WireData.Code6 normamps=660.0 emergamps=600.0
+New WireData.Code4 normamps=265.0 emergamps=600.0
+New WireData.Code1 normamps=240.0 emergamps=600.0
+New WireData.Code2 normamps=193.0 emergamps=600.0
+New WireData.Code3 normamps=350.0 emergamps=600.0
+New WireData.Code8 normamps=290.0 emergamps=600.0
+New WireData.Code10 normamps=400.0
+New WireData.Code5 normamps=3000.0 emergamps=3000.0
