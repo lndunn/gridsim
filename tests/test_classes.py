@@ -14,6 +14,10 @@ class TestSimulation(unittest.TestCase):
         # pp.topology.unsupplied_buses(self.network)
         pass
 
+    def test_generate_outage_realization(self):
+        outage_table = Simulation.generate_outage_realization()
+        self.assertIsInstance(outage_table, pd.Series)
+
 
 class TestGridNetwork(unittest.TestCase):
     def setUp(self):

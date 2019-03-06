@@ -5,16 +5,7 @@ import pandapower as pp
 import datetime
 from scipy import stats
 import logging
-
-
-MAIN_DIRECTORY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RESULTS_DIRECTORY = os.path.join(MAIN_DIRECTORY, 'simulations')
-INPUT_DIRECTORY = os.path.join(MAIN_DIRECTORY, 'inputs')
-GSO_DIRECTORY = os.path.join(INPUT_DIRECTORY, 'GSO_Base_Network')
-LINE_OUTAGE_FILE = 'line_outage_consequences.csv'
-LINE_OUTAGE_PATH = os.path.join(INPUT_DIRECTORY, LINE_OUTAGE_FILE)
-AFFECTED_BUSES_FILE = 'affected_buses.csv'
-AFFECTED_BUSES_PATH = os.path.join(INPUT_DIRECTORY, AFFECTED_BUSES_FILE)
+import gridsim.utils as u
 
 
 class GridNetwork:
@@ -24,6 +15,9 @@ class GridNetwork:
         self.bus_outages_cost = self._compute_bus_outages_cost(self.loads)
         self.affected_buses = self._get_affected_buses()
         self.line_outages = self._initialize_line_outage(self.network)
+
+    def reset_network(self):
+        self.network['line']['in_service'] = True
 
     def compute_and_save_line_consequences(self):
         it = 0
@@ -38,9 +32,9 @@ class GridNetwork:
             it += 1
             if it % 1000 == 0:
                 logging.info('%s of %s', (it, len(self.affected_buses)))
-                self.line_outages.to_csv(LINE_OUTAGE_PATH, index_label='line')
-        #TODO(Mathilde): Check if that line is necessary
-        self.line_outages.to_csv(LINE_OUTAGE_PATH, index_label='line')
+                self.line_outages.to_csv(u.LINE_OUTAGE_PATH, index_label='line')
+        # TODO(Mathilde): Check if that line is necessary
+        self.line_outages.to_csv(u.LINE_OUTAGE_PATH, index_label='line')
 
     def _get_and_join_loads_to_network(self, network):
         bus_index = network['bus'][['name', 'zone']].reset_index()
@@ -53,15 +47,15 @@ class GridNetwork:
 
     @staticmethod
     def _initialize_line_outage(network):
-        if LINE_OUTAGE_FILE in os.listdir(INPUT_DIRECTORY):
-            line_outages = pd.read_csv(LINE_OUTAGE_PATH, index_col='line')
+        if u.LINE_OUTAGE_FILE in os.listdir(u.INPUT_DIRECTORY):
+            line_outages = pd.read_csv(u.LINE_OUTAGE_PATH, index_col='line')
         else:
             pd.DataFrame(columns=['customers', 'load', 'cost'], index=network['line'].index)
         return line_outages
 
     @staticmethod
     def _get_affected_buses():
-        affected_buses = pd.read_csv(LINE_OUTAGE_PATH, header=None)
+        affected_buses = pd.read_csv(u.LINE_OUTAGE_PATH, header=None)
         affected_buses = affected_buses.drop_duplicates().set_index(0)
         return affected_buses[1]
 
@@ -69,11 +63,11 @@ class GridNetwork:
     def _get_loads():
         loads = pd.DataFrame(columns=['bus', 'vn_kv', 'vn_min_pu', 'vn_max_pu', 'kW', 'kVar', 'phases', 'zone'])
 
-        for system_type in os.listdir(GSO_DIRECTORY):
+        for system_type in os.listdir(u.GSO_DIRECTORY):
             if system_type[0] == '.':
                 continue
 
-            df = pd.read_csv(os.path.join(GSO_DIRECTORY, system_type, 'Loads.dss'), delimiter=' ',
+            df = pd.read_csv(os.path.join(u.GSO_DIRECTORY, system_type, 'Loads.dss'), delimiter=' ',
                              header=None, usecols=[3, 4, 5, 6, 8, 9, 10],
                              names=['bus', 'vn_kv', 'vn_min_pu', 'vn_max_pu', 'kW', 'kVar', 'phases', ], )
             for col in list(df.keys()):
@@ -94,30 +88,25 @@ class GridNetwork:
         bus_outages_cost['load'] = groups['kW'].sum()
         return bus_outages_cost
 
-    @staticmethod
-    def _get_affected_buses():
-        affected_buses = pd.read_csv(AFFECTED_BUSES_PATH, header=None)
-        affected_buses = affected_buses.drop_duplicates().set_index(0)
-        return affected_buses[1]
-
 
 class Simulation:
-    def __init__(self, system, line_types, outage_rates, repair_times, path_network, event_duration=30, multiplier=(1, 1), k=10,
+    def __init__(self, grid_network, line_types, outage_rates, repair_times, path_network, event_duration=30,
+                 multiplier=(1, 1), k=10,
                  dt=15. / 60,
-                 results_dir=RESULTS_DIRECTORY):
+                 results_dir=u.RESULTS_DIRECTORY):
 
-        #TODO: This should be precised in the run_simulation method or as an input of the simulation?
+        # this is possible if outage_tables exist
         # self.number = sum(['simulation' in f for f in os.listdir(os.path.join(results_dir, 'outage_tables'))])
         self.number = 1
 
-        self.grid_network = GridNetwork(path_network)
+        self.grid_network = grid_network
+        self.grid_network.reset_network()
 
         self.k = k
         self.dt = dt
         self.event_duration = event_duration
         self.multiplier = multiplier
         self.results_dir = results_dir
-        self.system = system
         if not hasattr(outage_rates, '__len__'):
             unique_line_types = line_types.unique()
             self.rates = pd.Series(outage_rates, index=unique_line_types)
@@ -143,9 +132,6 @@ class Simulation:
                      'length_km'].sum()),
                 ('lambda_overhead', self.multiplier[0]),
                 ('lambda_underground', self.multiplier[1])]
-
-        print(key)
-
         metadata = pd.DataFrame(pd.Series(dict(keys), name=self.number)).T
 
         if 'metadata.csv' not in os.listdir(self.results_dir):
@@ -156,12 +142,12 @@ class Simulation:
             f.close()
 
         outage_table.to_csv(
-            os.path.join(self.results_dir, 'outage_table-simulation%i.csv' % (self.number)))
+            os.path.join(self.results_dir, 'outage_table_simulation%i.csv' % self.number))
         total_costs.to_csv(
-            os.path.join(self.results_dir, 'system_costs-simulation%i.csv' % (self.number)))
+            os.path.join(self.results_dir, 'system_costs_simulation%i.csv' % self.number))
 
     def calc_failure_rates(self):
-        failure_rates = pd.Series(np.nan, index=self.system.network['line'].index)
+        failure_rates = pd.Series(np.nan, index=self.grid_network.network['line'].index)
         for l_type, rate in self.rates.iteritems():
             failure_rates.loc[self.idx_l_type[l_type]] = rate
         return failure_rates
@@ -172,17 +158,18 @@ class Simulation:
 
         for l_type, rate in self.rates.iteritems():
             number_of_faults += pd.Series(
-                stats.poisson.rvs(rate * self.system.network['line'].loc[self.idx_l_type[l_type]]['length_km'].sum(),
-                                  size=len(number_of_faults)), index=time_steps)
+                stats.poisson.rvs(
+                    rate * self.grid_network.network['line'].loc[self.idx_l_type[l_type]]['length_km'].sum(),
+                    size=len(number_of_faults)), index=time_steps)
 
         dfs = []
         for t in number_of_faults.index:
-            #TODO: Here we have a division by zero!!!
+            # TODO: Here we have a division by zero!!!
             try:
                 p = (self.line_failure_rates / self.line_failure_rates.sum()).tolist()
             except:
-                p = (0).tolist()
-            lines_out = np.random.choice(self.system.network['line'].index,
+                p = self.line_failure_rates.tolist()
+            lines_out = np.random.choice(self.grid_network.network['line'].index,
                                          size=number_of_faults.loc[t],
                                          p=p)
 
@@ -203,9 +190,10 @@ class Simulation:
         return outage_table.reset_index().rename(columns={'index': 'line'}).set_index('line')
 
     def compute_unsupplied_totals(self):
-        unsupplied_buses = pp.topology.unsupplied_buses(self.system.network)
-        unsupplied_load_buses = unsupplied_buses & set(self.system.bus_outages_cost.index)
-        total_consequences = self.system.bus_outages_cost.loc[unsupplied_load_buses].sum()
+        print('----- Compute unsupplied lines -----')
+        unsupplied_buses = pp.topology.unsupplied_buses(self.grid_network.network)
+        unsupplied_load_buses = unsupplied_buses & set(self.grid_network.bus_outages_cost.index)
+        total_consequences = self.grid_network.bus_outages_cost.loc[unsupplied_load_buses].sum()
         return total_consequences
 
     def compute_outage_cost(self, lines_out, new_outages, t, k):
@@ -221,7 +209,7 @@ class Simulation:
 
         # first cut at computing damages looks at precomputed values for N-1 topologies
         #    this approx should work most of the time, except if two redundant lines fail
-        estimated_consequences = self.system.line_outages.loc[new_outages]
+        estimated_consequences = self.grid_network.line_outages.loc[new_outages]
 
         damage_keys = total_consequences.index
         for outage in new_outages:
@@ -236,7 +224,7 @@ class Simulation:
         #     (there's a high probability that it is)
         close_enough = np.abs(total_consequences.loc['load'] - self.outage_table['load'].loc[lines_out].sum()) < 1e-3
         if close_enough:
-            for key in self.system.line_outages.keys():
+            for key in self.grid_network.line_outages.keys():
                 self.outage_table[key].loc[new_outages] = estimated_consequences[key].loc[new_outages]
             pass
         else:
@@ -251,14 +239,14 @@ class Simulation:
             while ~close_enough and len(process_lines) > 0:
                 line = process_lines.pop(0)
 
-                self.system.network['line']['in_service'].loc[line] = True
+                self.grid_network.network['line']['in_service'].loc[line] = True
                 restoration_benefits = self.compute_unsupplied_totals()
                 marginal_change = total_consequences - restoration_benefits
-                self.system.network['line']['in_service'].loc[line] = False
+                self.grid_network.network['line']['in_service'].loc[line] = False
 
                 self.outage_table[marginal_change.index].loc[line] = marginal_change
 
-                #TODO: idx here is never used ...
+                # TODO: idx here is never used ...
                 idx = pd.notnull(self.outage_table.loc[lines_out]['load'])
                 close_enough = np.abs(total_consequences.loc['load']
                                       - self.outage_table['load'].loc[lines_out].sum()) < 1e-3
@@ -272,7 +260,7 @@ class Simulation:
         lines_out = []
         t = 0
         k = int(self.k)
-        self.total_costs = pd.DataFrame(0, columns=self.grid_network.bus_outages_cost.keys(), index=[t, ])
+        total_costs = pd.DataFrame(0, columns=self.grid_network.bus_outages_cost.keys(), index=[t, ])
         while (t <= self.event_duration) or (len(lines_out) > 0):
             new_outages = self.outage_table[self.outage_table['start'] == t].index.tolist()
 
@@ -283,6 +271,9 @@ class Simulation:
             lines_out.extend(new_outages)
             lines_out = list(set(lines_out))
 
+            print('lines_out: ', lines_out)
+            # lines_out is never updated ...
+
             if len(lines_out) == 0:
                 pass
             else:
@@ -290,9 +281,10 @@ class Simulation:
                 self.outage_table, total_cost = self.compute_outage_cost(lines_out, new_outages, t, k)
 
                 if type(total_cost) == type(None):
-                    self.total_costs.loc[t] = self.total_costs.loc[self.total_costs.index.max()]
+                    # I don't understand this condition
+                    total_costs.loc[t] = total_costs.loc[total_costs.index.max()]
                 else:
-                    self.total_costs.loc[t] = total_cost
+                    total_costs.loc[t] = total_cost
 
             self.outage_table = self.outage_table.sort_values(prioritization_criteria, ascending=False)
 
@@ -305,8 +297,9 @@ class Simulation:
             repairs_completed = self.outage_table[idx].index
             k += len(repairs_completed)
             self.grid_network.network['line']['in_service'].loc[repairs_completed] = True
-            lines_out = self.grid_network.network['line'][self.grid_network.network['line']['in_service'] == False].index.tolist()
+            lines_out = self.grid_network.network['line'][
+                self.grid_network.network['line']['in_service'] == False].index.tolist()
 
             t += self.dt
 
-        return self.outage_table, self.total_costs
+        return self.outage_table, total_costs
