@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 from scipy import stats
 
-from gridsim.classes import Simulation, GridNetwork
-import gridsim.utils as u
+from classes import Simulation, GridNetwork
+import utils as u
 
 
 def repair_time_distribution(sig, mu, distribution=stats.lognorm):
@@ -61,7 +61,8 @@ def run_simulation(path_network):
 
         for i in range(remaining_sims):
             print('----- Simulation %s for percentage underground %s -----' % (i, percent_underground))
-            sim = Simulation(grid_network, line_types, outage_rates, repair_times, path_network,
+            number = int(len(os.listdir(u.RESULTS_DIRECTORY))/2)
+            sim = Simulation(number, grid_network, line_types, outage_rates, repair_times, path_network,
                              event_duration=event_duration,
                              multiplier=multiplier, k=k,
                              dt=dt,
@@ -74,9 +75,9 @@ if __name__ == '__main__':
     path_network = os.path.join(u.INPUT_DIRECTORY, 'greensboro.json')
     run_simulation(path_network)
 
-    # temporary only when using the
-    import pstats
+    # # temporary only when using the
+    # import pstats
 
-    p = pstats.Stats('output_file')
-    p.sort_stats('time').print_stats(10)
-    # p.strip_dirs().sort_stats(-1).print_stats()
+    # p = pstats.Stats('output_file')
+    # p.sort_stats('time').print_stats(10)
+    # # p.strip_dirs().sort_stats(-1).print_stats()

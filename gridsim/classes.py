@@ -5,7 +5,7 @@ import pandapower as pp
 import datetime
 from scipy import stats
 import logging
-import gridsim.utils as u
+import utils as u
 
 
 class GridNetwork:
@@ -90,14 +90,14 @@ class GridNetwork:
 
 
 class Simulation:
-    def __init__(self, grid_network, line_types, outage_rates, repair_times, path_network, event_duration=30,
+    def __init__(self, number, grid_network, line_types, outage_rates, repair_times, path_network, event_duration=30,
                  multiplier=(1, 1), k=10,
                  dt=15. / 60,
                  results_dir=u.RESULTS_DIRECTORY):
 
         # this is possible if outage_tables exist
         # self.number = sum(['simulation' in f for f in os.listdir(os.path.join(results_dir, 'outage_tables'))])
-        self.number = 1
+        self.number = number
 
         self.grid_network = grid_network
         self.grid_network.reset_network()
@@ -141,8 +141,8 @@ class Simulation:
             metadata.to_csv(f, header=False)
             f.close()
 
-        outage_table.to_csv(
-            os.path.join(self.results_dir, 'outage_table_simulation%i.csv' % self.number))
+        with open(os.path.join(self.results_dir, 'outage_table_simulation%i.csv' % self.number),'a') as f:
+            outage_table.to_csv(f)
         total_costs.to_csv(
             os.path.join(self.results_dir, 'system_costs_simulation%i.csv' % self.number))
 
